@@ -30,7 +30,7 @@ export const fr = {
     language: 'Langue',
     problem: 'Le problème',
     how: 'Comment ça marche',
-    download: 'Télécharger',
+    install: 'Installer',
   },
 
   hero: {
@@ -49,22 +49,14 @@ export const fr = {
   },
 
   platforms: {
-    soon: 'Bientôt disponible',
+    footnote: 'Gratuit, sans compte, tes données restent sur ton appareil.',
     android: {
-      kicker: 'Android · fichier APK',
-      label: "Télécharger l'APK",
+      kicker: 'Android · app web',
+      label: 'Installer sur Android',
       install: {
-        title: "Installer l'APK sur Android",
-        intro: "Deckmend n'est pas (encore) sur le Play Store : tu installes l'app directement, en quatre gestes.",
-        steps: [
-          { title: 'Télécharge le fichier', body: 'Touche le bouton ci-dessous depuis ton téléphone. Le fichier deckmend.apk arrive dans tes téléchargements.' },
-          { title: 'Ouvre-le', body: "Depuis la notification de fin de téléchargement, ou via l'app Fichiers › Téléchargements." },
-          { title: "Autorise l'installation", body: 'Si Android bloque, touche Paramètres et active « Autoriser cette source » pour ton navigateur. À faire une seule fois.' },
-          { title: 'Installe', body: "Touche Installer. Si Play Protect s'inquiète, choisis « Installer quand même » : l'app ne demande aucune permission sensible." },
-        ],
-        note: 'Sur ordinateur ? Ouvre cette page depuis ton téléphone Android, ou transfère le fichier par câble.',
-        meta: (version: string) => `Version ${version} · Android 8 et plus`,
-        cta: "Télécharger l'APK",
+        title: 'Installer Deckmend sur Android',
+        intro: 'Ouvre le lien dans Chrome ou Edge, puis accepte la proposition Installer. Deckmend apparaîtra avec tes autres applications.',
+        note: "Pas de proposition ? Ouvre le menu ⋮ du navigateur, puis Installer l'application (ou Ajouter à l'écran d'accueil).",
       },
     },
     ios: {
@@ -72,27 +64,30 @@ export const fr = {
       label: 'Installer sur iPhone',
       install: {
         title: 'Installer Deckmend sur iPhone',
-        intro: "Sur iPhone, Deckmend s'installe comme une app web : ni App Store, ni compte. Elle s'ouvre ensuite en plein écran, comme n'importe quelle app.",
-        steps: [
-          { title: "Ouvre l'app dans Safari", body: "Touche le bouton ci-dessous depuis ton iPhone. Si la page s'ouvre dans un autre navigateur, copie le lien dans Safari." },
-          { title: 'Touche Partager', body: "L'icône carrée avec une flèche vers le haut, en bas de l'écran (en haut sur iPad)." },
-          { title: "Ajoute-la à l'écran d'accueil", body: "Fais défiler, choisis « Sur l'écran d'accueil », puis touche Ajouter. Deckmend rejoint tes apps." },
-        ],
-        note: "Lance ensuite Deckmend depuis son icône plutôt que depuis Safari : plein écran, et les mises à jour arrivent toutes seules.",
-        meta: () => 'iPhone et iPad · Safari recommandé',
-        cta: "Ouvrir l'app web",
+        intro: "Ouvre le lien dans Safari, touche Partager, puis Sur l'écran d'accueil.",
+        note: 'Lance ensuite Deckmend depuis son icône plutôt que depuis Safari : plein écran, et les mises à jour arrivent toutes seules.',
       },
     },
-    web: {
-      kicker: 'Sans rien installer',
-      label: 'Version web',
+    desktop: {
+      kicker: 'Mac et PC · app web',
+      label: 'Installer sur ordinateur',
+      install: {
+        title: 'Installer Deckmend sur ordinateur',
+        intro: 'Ouvre le lien dans Chrome ou Edge, puis accepte la proposition Installer. Deckmend apparaîtra avec tes autres applications.',
+        note: "Pas de proposition ? Clique sur l'icône d'installation, à droite de la barre d'adresse.",
+      },
     },
   },
 
   dialog: {
     close: 'Fermer',
     noteTag: 'À savoir',
-    started: 'Téléchargement lancé. Relancer ?',
+    cta: 'Ouvrir Deckmend',
+    /** Illustration des trois gestes sur iPhone */
+    iosGesture: {
+      label: 'Les trois gestes sur iPhone',
+      steps: ['Ouvre dans Safari', 'Touche Partager', "Sur l'écran d'accueil"],
+    },
   },
 
   problem: {

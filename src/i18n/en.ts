@@ -27,7 +27,7 @@ export const en: Messages = {
     language: 'Language',
     problem: 'The problem',
     how: 'How it works',
-    download: 'Download',
+    install: 'Install',
   },
 
   hero: {
@@ -46,22 +46,14 @@ export const en: Messages = {
   },
 
   platforms: {
-    soon: 'Coming soon',
+    footnote: 'Free, no account, your data stays on your device.',
     android: {
-      kicker: 'Android · APK file',
-      label: 'Download the APK',
+      kicker: 'Android · web app',
+      label: 'Install on Android',
       install: {
-        title: 'Install the APK on Android',
-        intro: "Deckmend isn't on the Play Store (yet): you install the app directly, in four moves.",
-        steps: [
-          { title: 'Download the file', body: 'Tap the button below from your phone. The deckmend.apk file lands in your downloads.' },
-          { title: 'Open it', body: 'From the download notification, or through the Files app › Downloads.' },
-          { title: 'Allow the install', body: 'If Android blocks it, tap Settings and turn on “Allow from this source” for your browser. You only do this once.' },
-          { title: 'Install', body: 'Tap Install. If Play Protect gets nervous, choose “Install anyway”: the app asks for no sensitive permissions.' },
-        ],
-        note: 'On a computer? Open this page from your Android phone, or transfer the file over USB.',
-        meta: (version) => `Version ${version} · Android 8 and up`,
-        cta: 'Download the APK',
+        title: 'Install Deckmend on Android',
+        intro: 'Open the link in Chrome or Edge, then accept the Install prompt. Deckmend will appear alongside your other apps.',
+        note: "No prompt? Open the browser's ⋮ menu, then Install app (or Add to Home screen).",
       },
     },
     ios: {
@@ -69,27 +61,29 @@ export const en: Messages = {
       label: 'Install on iPhone',
       install: {
         title: 'Install Deckmend on iPhone',
-        intro: 'On iPhone, Deckmend installs as a web app: no App Store, no account. It then opens full screen, like any other app.',
-        steps: [
-          { title: 'Open the app in Safari', body: 'Tap the button below from your iPhone. If the page opens in another browser, copy the link into Safari.' },
-          { title: 'Tap Share', body: 'The square icon with an arrow pointing up, at the bottom of the screen (at the top on iPad).' },
-          { title: 'Add it to your Home Screen', body: 'Scroll down, pick “Add to Home Screen”, then tap Add. Deckmend joins your apps.' },
-        ],
+        intro: 'Open the link in Safari, tap Share, then Add to Home Screen.',
         note: 'From then on, launch Deckmend from its icon rather than from Safari: full screen, and updates arrive on their own.',
-        meta: () => 'iPhone and iPad · Safari recommended',
-        cta: 'Open the web app',
       },
     },
-    web: {
-      kicker: 'Nothing to install',
-      label: 'Web version',
+    desktop: {
+      kicker: 'Mac and PC · web app',
+      label: 'Install on computer',
+      install: {
+        title: 'Install Deckmend on your computer',
+        intro: 'Open the link in Chrome or Edge, then accept the Install prompt. Deckmend will appear alongside your other apps.',
+        note: 'No prompt? Click the install icon on the right side of the address bar.',
+      },
     },
   },
 
   dialog: {
     close: 'Close',
     noteTag: 'Good to know',
-    started: 'Download started. Try again?',
+    cta: 'Open Deckmend',
+    iosGesture: {
+      label: 'The three moves on iPhone',
+      steps: ['Open in Safari', 'Tap Share', 'Add to Home Screen'],
+    },
   },
 
   problem: {

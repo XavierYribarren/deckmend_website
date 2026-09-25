@@ -8,17 +8,17 @@ npm run dev      # développement
 npm run build    # build de prod dans dist/
 ```
 
-## Téléchargements
+## Installation (PWA)
 
-Les boutons Android (APK) et iPhone (PWA, « Sur l'écran d'accueil ») ouvrent un overlay avec les instructions
-d'installation (`src/components/DownloadDialog.tsx`). Liens : `src/data/platforms.ts`, textes : `src/i18n/`.
-Les URLs se surchargent au build :
+Deckmend est distribuée uniquement en app web installable. Les trois boutons (Android, iPhone, ordinateur)
+pointent vers `APP_URL` et ouvrent un overlay d'instructions propre à chaque plateforme
+(`src/components/InstallDialog.tsx`). Cmd/Ctrl + clic ouvre directement l'app.
 
-| Variable           | Défaut                                                            |
-| ------------------ | ----------------------------------------------------------------- |
-| `VITE_APK_URL`     | `/downloads/deckmend.apk` (→ `public/downloads/`, ignoré par git) |
-| `VITE_PWA_URL`     | `/app/` (URL de l'app web installable)                            |
-| `VITE_APP_VERSION` | `1.0.0`                                                           |
+L'adresse est dans `src/data/platforms.ts` et se surcharge au build :
+
+```bash
+VITE_APP_URL=https://app.deckmend.com npm run build
+```
 
 ## Variante de hero
 

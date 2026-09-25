@@ -25,6 +25,3 @@ dist-ssr
 
 # Design sources (maquettes)
 design_source/
-
-# Binaires distribués (déposés au déploiement)
-public/downloads/*.apk

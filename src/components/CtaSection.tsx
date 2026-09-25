@@ -6,7 +6,7 @@ import styles from './CtaSection.module.css'
 export function CtaSection() {
   const { t } = useI18n()
   return (
-    <section id="telecharger" className={styles.section}>
+    <section id="installer" className={styles.section}>
       <div className={styles.head}>
         <div className={styles.headText}>
           <h2 data-reveal className={styles.title}>{t.cta.title}</h2>

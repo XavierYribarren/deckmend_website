@@ -130,44 +130,55 @@
   max-width: 46ch;
 }
 
-/* Étapes */
-.steps {
+/* Les trois gestes iPhone */
+.gesture {
   list-style: none;
   margin: 0;
-  padding: 4px 20px;
-  background: var(--dm-bg);
-  border-radius: 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.step {
+.gestureStep {
   display: flex;
-  gap: 18px;
-  padding: 18px 0;
+  flex-direction: column;
+  gap: 10px;
 }
-.step + .step { border-top: 1px solid var(--dm-line); }
 
-.stepNum {
-  width: 28px;
-  flex: none;
-  font: 300 36px/0.8 var(--font-display);
+.gestureTile {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: 20px;
+  background: var(--dm-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gestureNum {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font: 300 22px/1 var(--font-display);
   letter-spacing: -0.04em;
 }
 
-.stepText {
+/* La touche à toucher, comme dans l'interface iOS */
+.gestureKey {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--dm-white);
+  color: var(--dm-ink);
+  box-shadow: var(--shadow-card);
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
 }
 
-.stepTitle {
-  margin: 0;
-  font: 500 15px/1.3 var(--font-body);
-}
-
-.stepBody {
-  margin: 0;
-  font: 400 14px/1.55 var(--font-body);
-  color: var(--dm-muted);
+.gestureText {
+  font: 500 13px/1.35 var(--font-body);
 }
 
 /* Encadré */
@@ -217,12 +228,6 @@
   background: var(--dm-accent);
   color: var(--dm-ink);
   transform: translateY(-2px);
-}
-
-.meta {
-  font: 400 12px/1.4 var(--font-body);
-  color: var(--dm-muted);
-  text-align: center;
 }
 
 /* Mobile : bottom sheet */

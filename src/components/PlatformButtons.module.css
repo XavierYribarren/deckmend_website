@@ -1,3 +1,9 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .grid {
   display: grid;
   gap: 12px;
@@ -10,10 +16,13 @@
   min-height: 80px;
   padding: 16px 22px;
   border-radius: 20px;
-  border: 0;
   text-align: left;
   text-decoration: none;
+  cursor: pointer;
+  transition: background .25s, color .25s, transform .25s;
 }
+.btn:hover { transform: translateY(-2px); }
+.btn:hover .arrow { transform: translateX(3px); }
 
 .icon {
   width: 42px;
@@ -30,10 +39,6 @@
   flex-direction: column;
   gap: 3px;
 }
-.textSoon {
-  gap: 6px;
-  align-items: flex-start;
-}
 
 .kicker { font: 400 12px/1.2 var(--font-body); }
 .label { font: 500 18px/1.2 var(--font-body); }
@@ -44,45 +49,22 @@
   transition: transform .25s var(--ease-out);
 }
 
-.tag {
-  font: 500 11px/1 var(--font-body);
-  background: var(--dm-tag);
-  color: var(--dm-ink);
-  padding: 5px 9px;
-  border-radius: 999px;
+/* Sur fond clair : boutons encre */
+.btn.onLight { background: var(--dm-ink); color: var(--dm-white); }
+.btn.onLight .icon { background: rgba(255, 255, 255, .12); }
+.btn.onLight .kicker { opacity: .8; }
+.btn.onLight:hover { background: var(--dm-accent); color: var(--dm-ink); }
+
+/* Sur fond encre : boutons blancs */
+.btn.onInk { background: var(--dm-white); color: var(--dm-ink); }
+.btn.onInk .icon { background: var(--dm-bg); }
+.btn.onInk .kicker { color: var(--dm-muted); }
+.btn.onInk:hover { background: var(--dm-accent); }
+
+/* Ligne discrète sous les boutons */
+.footnote {
+  margin: 0;
+  font: 400 13px/1.5 var(--font-body);
 }
-
-/* Disponible */
-.live {
-  cursor: pointer;
-  transition: background .25s, color .25s, transform .25s;
-}
-.live:hover { transform: translateY(-2px); }
-.live:hover .arrow { transform: translateX(3px); }
-
-.live.onLight { background: var(--dm-ink); color: var(--dm-white); }
-.live.onLight .icon { background: rgba(255, 255, 255, .12); }
-.live.onLight .kicker { opacity: .8; }
-.live.onLight:hover { background: var(--dm-accent); color: var(--dm-ink); }
-
-.live.onInk { background: var(--dm-white); color: var(--dm-ink); }
-.live.onInk .icon { background: var(--dm-bg); }
-.live.onInk .kicker { color: var(--dm-muted); }
-.live.onInk:hover { background: var(--dm-accent); }
-
-/* Bientôt */
-.soon { cursor: not-allowed; }
-
-.soon.onLight {
-  background: var(--dm-white);
-  border: 1px solid var(--dm-line);
-  color: var(--dm-muted);
-}
-.soon.onLight .icon { background: var(--dm-bg); }
-
-.soon.onInk {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .18);
-  color: var(--dm-line);
-}
-.soon.onInk .icon { background: rgba(255, 255, 255, .08); }
+.footnote.onLight { color: var(--dm-muted); }
+.footnote.onInk { color: rgba(233, 233, 236, .7); }
