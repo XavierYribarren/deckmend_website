@@ -1,0 +1,21 @@
+/* Styles typographiques partagés entre sections */
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6.4vw, 100px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.lede {
+  margin: 0;
+  font: 400 clamp(17px, 1.4vw, 20px)/1.55 var(--font-body);
+  color: var(--dm-muted);
+}
+
+.body {
+  margin: 0;
+  font: 400 16px/1.6 var(--font-body);
+  color: var(--dm-muted);
+}

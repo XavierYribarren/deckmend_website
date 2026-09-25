@@ -1,0 +1,30 @@
+.footer {
+  padding: 28px 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wordmark { font: 700 20px/1 var(--font-display); }
+
+.legal {
+  font: 400 13px/1.5 var(--font-body);
+  color: var(--dm-muted);
+}
+
+.links {
+  margin-left: auto;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font: 400 13px/1 var(--font-body);
+}
+.links a { text-decoration: none; }
+.links a:hover { text-decoration: underline; }

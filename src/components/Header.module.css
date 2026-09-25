@@ -1,0 +1,82 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(247, 247, 249, .86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.inner {
+  width: var(--page-width);
+  margin: 0 auto;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--dm-ink);
+}
+
+.wordmark {
+  font: 700 22px/1 var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: 6px;
+}
+
+.navLink {
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font: 400 15px/1 var(--font-body);
+  color: var(--dm-ink);
+  transition: background .2s;
+}
+.navLink:hover { background: var(--dm-line); }
+
+.end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--dm-ink);
+  color: var(--dm-white);
+  text-decoration: none;
+  font: 500 15px/1 var(--font-body);
+  transition: background .25s, color .25s;
+}
+.cta:hover {
+  background: var(--dm-accent);
+  color: var(--dm-ink);
+}
+
+@media (max-width: 759px) {
+  .nav { display: none; }
+}
+
+/* Petits écrans : le bouton ne garde que sa flèche pour laisser la place au sélecteur */
+@media (max-width: 420px) {
+  .cta { padding: 12px 14px; }
+  .ctaLabel {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap;
+  }
+}

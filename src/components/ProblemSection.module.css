@@ -1,0 +1,231 @@
+.section {
+  padding: clamp(56px, 8vw, 128px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 72px);
+  scroll-margin-top: 40px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.title { max-width: 14ch; }
+.lede { max-width: 40ch; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(32px, 4vw, 56px);
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.pointHead {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.pointNum { font: 300 56px/0.8 var(--font-display); }
+.pointTitle {
+  margin: 0;
+  font: 400 clamp(24px, 2.2vw, 30px)/1.1 var(--font-display);
+  letter-spacing: -0.02em;
+}
+.pointText { max-width: 38ch; }
+
+.visualCard {
+  background: var(--dm-white);
+  border-radius: 28px;
+  height: 250px;
+  padding: 28px;
+}
+
+/* 1 · Cartes abîmées */
+.damaged {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.specimen {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.specimen figcaption {
+  font: 400 12px/1 var(--font-body);
+  color: var(--dm-muted);
+}
+
+.card {
+  position: relative;
+  width: 58px;
+  height: 82px;
+  background: var(--dm-white);
+  border: 1px solid var(--dm-line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 26px/1 var(--font-display);
+}
+.red { color: var(--dm-suit); }
+.folded {
+  overflow: hidden;
+  transform: rotate(-5deg);
+}
+
+.corner {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  font: 700 13px/1 var(--font-display);
+}
+
+.dogEar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--dm-line);
+  border-bottom-left-radius: 8px;
+}
+
+.scratch {
+  position: absolute;
+  bottom: 13px;
+  right: 8px;
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--dm-tag);
+  transform: rotate(-24deg);
+}
+
+.lost {
+  width: 58px;
+  height: 82px;
+  border: 1px dashed var(--dm-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 300 26px/1 var(--font-display);
+  color: var(--dm-muted);
+}
+
+.torn {
+  width: 58px;
+  height: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tornTop,
+.tornBottom {
+  flex: 1;
+  background: var(--dm-white);
+  border: 1px solid var(--dm-line);
+  box-shadow: var(--shadow-card);
+}
+.tornTop {
+  border-radius: 8px 8px 3px 3px;
+  transform: rotate(-7deg) translateX(-3px);
+  font: 700 13px/1 var(--font-display);
+  padding: 6px 7px;
+}
+.tornBottom {
+  border-radius: 3px 3px 8px 8px;
+  transform: rotate(5deg) translateX(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 18px/1 var(--font-display);
+}
+
+/* 2 · Paquets qui se vident */
+.bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+}
+.bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.barHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.barName { font: 500 14px/1 var(--font-body); }
+.barCount {
+  margin-left: auto;
+  font: 700 18px/1 var(--font-display);
+}
+.unit {
+  font: 400 12px/1 var(--font-body);
+  color: var(--dm-muted);
+}
+.track {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--dm-line);
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--dm-ink);
+}
+
+/* 3 · Le tiroir */
+.drawer {
+  position: relative;
+  overflow: hidden;
+}
+.chip {
+  position: absolute;
+  width: 170px;
+  height: 46px;
+  background: var(--dm-white);
+  border: 1px solid var(--dm-line);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px -14px rgba(27, 35, 80, .5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+}
+.chipName {
+  font: 500 13px/1 var(--font-body);
+  white-space: nowrap;
+}
+.chipCount {
+  margin-left: auto;
+  font: 700 14px/1 var(--font-display);
+}
+.total {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  background: var(--dm-ink);
+  color: var(--dm-white);
+  font: 500 13px/1 var(--font-body);
+  padding: 9px 13px;
+  border-radius: 999px;
+}

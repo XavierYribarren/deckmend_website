@@ -1,0 +1,99 @@
+.section {
+  --pad-x: clamp(24px, 5vw, 80px);
+  position: relative;
+  margin: clamp(24px, 4vw, 64px) 0 clamp(40px, 5vw, 72px);
+  background: var(--dm-ink);
+  color: var(--dm-white);
+  border-radius: clamp(28px, 3vw, 40px);
+  padding: clamp(40px, 7vw, 112px) var(--pad-x);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 56px);
+  scroll-margin-top: 96px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(42px, 7vw, 112px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  max-width: 13ch;
+}
+
+.lede {
+  margin: 0;
+  font: 400 clamp(17px, 1.4vw, 20px)/1.55 var(--font-body);
+  color: var(--dm-line);
+  max-width: 36ch;
+}
+
+/* Icône d'app en relief, sans cadre : c'est la tuile blanche elle-même qui est éclairée.
+   - dégradé haut → bas : la lumière vient d'au-dessus ;
+   - reflet sur l'arête haute, ombre sur l'arête basse : le biseau ;
+   - ombres portées en trois couches : l'élévation.
+   Le fond blanc reprend celui de la future icône d'app. */
+.appIcon {
+  --size: clamp(208px, 22vw, 320px);
+  width: var(--size);
+  height: var(--size);
+  flex: none;
+  align-self: center;
+  margin-right: clamp(0px, 3vw, 48px);
+  padding: calc(var(--size) * .15);
+  border-radius: calc(var(--size) * .235);
+  background:
+    radial-gradient(120% 70% at 50% 0%, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(175deg, #FFFFFF 0%, #F4F6FB 50%, #DDE3F1 100%);
+  box-shadow:
+    /* biseau */
+    inset 0 calc(var(--size) * .01) calc(var(--size) * .006) #FFFFFF,
+    inset 0 calc(var(--size) * -.018) calc(var(--size) * .03) rgba(27, 35, 80, .2),
+    inset 0 0 0 1px rgba(27, 35, 80, .06),
+    /* élévation */
+    0 2px 4px rgba(8, 11, 32, .2),
+    0 16px 32px -10px rgba(8, 11, 32, .55),
+    0 40px 70px -24px rgba(8, 11, 32, .65);
+}
+
+.appIcon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 calc(var(--size) * .014) calc(var(--size) * .012) rgba(27, 35, 80, .25));
+}
+
+/* Mobile : l'icône passe au-dessus du titre, centrée, à cheval sur le bord haut du bloc */
+@media (max-width: 759px) {
+  .section {
+    --icon: 124px;
+    margin-top: calc(var(--icon) / 2 + 40px);
+    padding-top: calc(var(--icon) / 2 + 28px);
+  }
+
+  .head { display: block; }
+
+  .appIcon {
+    --size: var(--icon);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin: 0;
+    translate: -50% -50%;
+  }
+}
