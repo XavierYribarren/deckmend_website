@@ -18,13 +18,6 @@ export const fr = {
     unnamed: 'Sans nom',
   },
 
-  placeholders: {
-    media: 'Emplacement média',
-    mediaWide: 'Emplacement média pleine largeur',
-    mediaFormat: (ratio: string) => `Image ou animation, ${ratio}`,
-    mediaHint: 'Glisse ici le visuel du hero',
-  },
-
   header: {
     navLabel: 'Principale',
     language: 'Langue',

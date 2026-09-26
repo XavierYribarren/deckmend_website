@@ -8,38 +8,3 @@
   flex: none;
   object-fit: contain;
 }
-
-.media {
-  position: relative;
-  background: var(--dm-line);
-  border-radius: 32px;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.mediaHead {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font: 500 13px/1.4 var(--font-body);
-}
-
-.muted { color: var(--dm-muted); }
-
-.mediaFrame {
-  position: absolute;
-  inset: 64px 28px 64px;
-  border: 1px dashed var(--dm-muted);
-  border-radius: 20px;
-  pointer-events: none;
-}
-
-.mediaFoot {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font: 400 13px/1.4 var(--font-body);
-  color: var(--dm-muted);
-}

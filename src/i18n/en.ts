@@ -15,13 +15,6 @@ export const en: Messages = {
     unnamed: 'Untitled',
   },
 
-  placeholders: {
-    media: 'Media placeholder',
-    mediaWide: 'Full-width media placeholder',
-    mediaFormat: (ratio) => `Image or animation, ${ratio}`,
-    mediaHint: 'Drop the hero visual here',
-  },
-
   header: {
     navLabel: 'Main',
     language: 'Language',

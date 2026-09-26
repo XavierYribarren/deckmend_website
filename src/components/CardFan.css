@@ -1,0 +1,124 @@
+/*
+ * Custom properties the host page can set (defaults = original look):
+ *   --card-fan-unit     base unit, every size is a multiple of it (1px)
+ *   --card-fan-spades   spades color (#2c2c2a)
+ *   --card-fan-hearts   hearts color (#d4537e)
+ *   --card-fan-card-bg  card face (#fff)
+ *   --card-fan-border   card edge (#b4b2a9)
+ *   --card-fan-font     card font (sans-serif)
+ *   --card-fan-shadow   card shadow (none)
+ *   --card-fan-duration opening duration of each card (2.2s)
+ *   --card-fan-ease     opening easing (fast start, long soft settle)
+ */
+.card-fan {
+  --u: var(--card-fan-unit, 1px);
+  display: flex;
+  justify-content: center;
+}
+
+/*
+ * The stage hugs the open fan (measured: ~87 units above the pivot, ~30 below,
+ * ~90 on each side), so the component has no dead space around the cards.
+ * The pivot sits 95 units from the top.
+ */
+.card-fan__stage {
+  position: relative;
+  width: calc(220 * var(--u));
+  height: calc(130 * var(--u));
+  perspective: calc(1000 * var(--u));
+  /* Same vanishing point as the original 340x200 stage: 100 units above the pivot */
+  perspective-origin: 50% calc(-5 * var(--u));
+}
+
+.card-fan__fan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(95 * var(--u));
+  transform-style: preserve-3d;
+  transform-origin: 50% 100%;
+  transform: rotateY(15deg);
+}
+
+.card-fan__card {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: calc(58 * var(--u));
+  height: calc(82 * var(--u));
+  margin-left: calc(-29 * var(--u));
+  background: var(--card-fan-card-bg, #fff);
+  border: max(0.5px, calc(0.5 * var(--u))) solid var(--card-fan-border, #b4b2a9);
+  border-radius: calc(6 * var(--u));
+  /* box-shadow is painted once into each card's layer, then only the transform
+     animates: cheap, unlike filter: drop-shadow. */
+  box-shadow: var(--card-fan-shadow, none);
+  box-sizing: border-box;
+  font-family: var(--card-fan-font, sans-serif);
+  transform-origin: 50% 100%;
+  transform: rotateZ(var(--angle, 0deg)) translateZ(var(--depth, 0px));
+  /* Ease-out: fast start, smooth deceleration into the final position, no overshoot/bounce. */
+  transition: transform var(--card-fan-duration, 2.2s) var(--card-fan-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  transition-delay: var(--delay, 0s);
+}
+
+.card-fan__corner {
+  position: absolute;
+  line-height: 1;
+}
+
+.card-fan__corner--simple {
+  top: calc(4 * var(--u));
+  left: calc(4 * var(--u));
+  font-size: calc(10 * var(--u));
+  font-weight: 500;
+}
+
+.card-fan__corner--top-left {
+  top: calc(3 * var(--u));
+  left: calc(3 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-fan__corner--bottom-right {
+  bottom: calc(3 * var(--u));
+  right: calc(3 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(180deg);
+}
+
+.card-fan__corner-rank {
+  font-size: calc(9 * var(--u));
+  font-weight: 500;
+}
+
+.card-fan__corner-suit {
+  font-size: calc(6 * var(--u));
+  margin-top: calc(1 * var(--u));
+}
+
+.card-fan__pip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: calc(7 * var(--u));
+  line-height: 1;
+}
+
+/* Larger pips used for the accurate rank-8 layout (3-2-3, flipped bottom half). */
+.card-fan__pip--large {
+  font-size: calc(11 * var(--u));
+}
+
+.card-fan__center-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: calc(15 * var(--u));
+  line-height: 1;
+}

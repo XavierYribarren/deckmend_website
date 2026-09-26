@@ -1,10 +1,25 @@
 .header {
+  --fade: 20px;
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(247, 247, 249, .86);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Verre dépoli sur un calque à part, prolongé sous la nav puis fondu :
+   le passage du flou au net est progressif au lieu d'une coupure nette. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 calc(-1 * var(--fade));
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(247, 247, 249, .72);
+  /* Préfixe d'abord, standard ensuite : dans l'autre ordre, le minifieur CSS du build
+     considère que la version préfixée écrase la standard et supprime cette dernière. */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent);
 }
 
 .inner {

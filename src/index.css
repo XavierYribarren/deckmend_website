@@ -41,6 +41,11 @@ body {
   text-wrap: pretty;
 }
 
+/* Rien ne doit élargir la page (l'éventail du hero déborde volontairement).
+   Sur #root et pas sur body : body transmettrait la règle à la fenêtre.
+   `clip` plutôt que `hidden` pour ne pas casser le header collant. */
+#root { overflow-x: clip; }
+
 a { color: inherit; }
 a:hover { color: inherit; }
 button { font: inherit; }

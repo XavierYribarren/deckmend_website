@@ -1,7 +1,7 @@
 import { useI18n } from '../i18n/context'
+import { CardFan } from './CardFan'
 import { FlipCard } from './FlipCard'
 import { PlatformButtons } from './PlatformButtons'
-import { MediaPlaceholder } from './primitives'
 import styles from './Hero.module.css'
 
 function Title({ className }: { className: string }) {
@@ -14,6 +14,15 @@ function Title({ className }: { className: string }) {
         <strong className={styles.bold}>{t.hero.line2Bold}</strong>
       </span>
     </h1>
+  )
+}
+
+/** Panneau média du hero : l'éventail de cartes, mis à l'échelle et aux couleurs du site */
+function HeroMedia({ className }: { className: string }) {
+  return (
+    <div className={`${styles.media} ${className}`}>
+      <CardFan />
+    </div>
   )
 }
 
@@ -32,8 +41,10 @@ export function Hero({ variant = 'A' }: { variant?: 'A' | 'B' }) {
           <p className={`${styles.pitch} ${styles.pitchB}`}>{t.hero.pitch}</p>
           <FlipCard />
         </div>
-        <PlatformButtons tone="onLight" />
-        <MediaPlaceholder wide className={styles.mediaB} />
+        <div className={styles.above}>
+          <PlatformButtons tone="onLight" />
+        </div>
+        <HeroMedia className={styles.mediaB} />
       </section>
     )
   }
@@ -48,9 +59,11 @@ export function Hero({ variant = 'A' }: { variant?: 'A' | 'B' }) {
             <FlipCard />
           </div>
         </div>
-        <MediaPlaceholder className={styles.mediaA} />
+        <HeroMedia className={styles.mediaA} />
       </div>
-      <PlatformButtons tone="onLight" />
+      <div className={styles.above}>
+        <PlatformButtons tone="onLight" />
+      </div>
     </section>
   )
 }

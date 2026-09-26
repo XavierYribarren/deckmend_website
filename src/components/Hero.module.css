@@ -13,6 +13,8 @@
 }
 
 .copy {
+  position: relative;
+  z-index: 1;
   padding: clamp(8px, 2vw, 24px) 0;
   display: flex;
   flex-direction: column;
@@ -44,6 +46,41 @@
   font: 400 clamp(17px, 1.4vw, 20px)/1.55 var(--font-body);
   color: var(--dm-muted);
   max-width: 34ch;
+}
+
+/* Texte et boutons passent au-dessus de l'éventail quand il déborde */
+.above {
+  position: relative;
+  z-index: 1;
+}
+
+.media {
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  /* L'éventail se dimensionne sur la largeur du panneau, et peut en déborder */
+  container-type: inline-size;
+  --card-fan-unit: clamp(2.4px, calc(190cqi / 220), 7px);
+  /* Décalage vers la gauche, proportionnel à la largeur du panneau */
+  --fan-shift: 10cqi;
+  /* Halo sans décalage : chaque carte étant tournée, une ombre décalée tournerait avec elle */
+  --card-fan-shadow:
+    0 0 0 .5px rgba(27, 35, 80, .04),
+    0 0 calc(6 * var(--card-fan-unit)) rgba(27, 35, 80, .1);
+  --card-fan-spades: var(--dm-ink);
+  --card-fan-hearts: var(--dm-suit);
+  --card-fan-card-bg: var(--dm-white);
+  --card-fan-border: rgba(27, 35, 80, .18);
+  --card-fan-font: var(--font-body);
+}
+
+/* Sorti du flux : la taille de l'éventail ne modifie jamais la mise en page,
+   c'est l'emplacement (grille + hauteur minimale) qui la définit. */
+.media > :global(.card-fan) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: calc(-50% - var(--fan-shift)) -50%;
 }
 
 .mediaA { min-height: clamp(340px, 44vw, 640px); }

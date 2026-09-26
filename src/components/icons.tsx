@@ -52,11 +52,6 @@ export const Monitor = ({ size = 20, ...p }: IconProps) => (
   <svg {...base(size, p)}><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></svg>
 )
 
-export const Image = ({ size = 18, ...p }: IconProps) => (
-  <svg {...base(size, p)}><rect x="3" y="3" width="18" height="18" rx="4" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" /></svg>
-)
-
-/** Boussole de Safari */
 export const Compass = ({ size = 24, ...p }: IconProps) => (
   <svg {...base(size, p)}><circle cx="12" cy="12" r="9" /><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3Z" /></svg>
 )

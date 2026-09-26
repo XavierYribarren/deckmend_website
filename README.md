@@ -17,7 +17,7 @@ pointent vers `APP_URL` et ouvrent un overlay d'instructions propre à chaque pl
 L'adresse est dans `src/data/platforms.ts` et se surcharge au build :
 
 ```bash
-VITE_APP_URL=https://app.deckmend.com npm run build
+VITE_APP_URL=https://deckmend-app.pages.dev npm run build
 ```
 
 ## Variante de hero
