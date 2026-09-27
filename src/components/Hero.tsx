@@ -1,15 +1,27 @@
+import type { CSSProperties } from 'react'
+import { useAfterFonts } from '../hooks/useAfterFonts'
 import { useI18n } from '../i18n/context'
 import { CardFan } from './CardFan'
-import { FlipCard } from './FlipCard'
 import { PlatformButtons } from './PlatformButtons'
 import styles from './Hero.module.css'
+
+/*
+ * Orchestration de l'arrivée. La mise en page est définitive dès le premier affichage :
+ * seules l'opacité et `transform` s'animent.
+ *   0 ms     titre, ligne 1
+ *   80 ms    titre, ligne 2
+ *   160 ms   accroche
+ *   240 ms   boutons d'installation (tôt : l'action est disponible tout de suite)
+ *   polices chargées + ~300 ms : ouverture de l'éventail
+ */
+const enter = (delayMs: number) => ({ '--d': `${delayMs}ms` }) as CSSProperties
 
 function Title({ className }: { className: string }) {
   const { t } = useI18n()
   return (
-    <h1 data-reveal className={className}>
-      <span className={styles.line}>{t.hero.line1}</span>
-      <span className={styles.line}>
+    <h1 className={className}>
+      <span className={`${styles.line} ${styles.enter}`} style={enter(0)}>{t.hero.line1}</span>
+      <span className={`${styles.line} ${styles.enter}`} style={enter(80)}>
         {t.hero.line2}
         <strong className={styles.bold}>{t.hero.line2Bold}</strong>
       </span>
@@ -19,16 +31,18 @@ function Title({ className }: { className: string }) {
 
 /** Panneau média du hero : l'éventail de cartes, mis à l'échelle et aux couleurs du site */
 function HeroMedia({ className }: { className: string }) {
+  // CardFan ajoute lui-même 150 ms avant d'ouvrir : ~300 ms après les polices au total
+  const ready = useAfterFonts(150)
   return (
-    <div className={`${styles.media} ${className}`}>
-      <CardFan />
+    <div className={`${styles.media} ${styles.fadeIn} ${className}`}>
+      <CardFan autoPlay={ready} />
     </div>
   )
 }
 
 /**
- * Variante A (par défaut) : titre + média 4:5 côte à côte.
- * Variante B : titre plein cadre, média 16:9 sous les boutons. Visible avec `?hero=B`.
+ * Variante A (par défaut) : titre + éventail côte à côte.
+ * Variante B : titre plein cadre, éventail 16:9 sous les boutons. Visible avec `?hero=B`.
  */
 export function Hero({ variant = 'A' }: { variant?: 'A' | 'B' }) {
   const { t } = useI18n()
@@ -37,11 +51,8 @@ export function Hero({ variant = 'A' }: { variant?: 'A' | 'B' }) {
     return (
       <section className={`${styles.hero} ${styles.heroB}`} aria-label={t.hero.label}>
         <Title className={`${styles.title} ${styles.titleB}`} />
-        <div data-reveal data-delay="150" className={styles.introB}>
-          <p className={`${styles.pitch} ${styles.pitchB}`}>{t.hero.pitch}</p>
-          <FlipCard />
-        </div>
-        <div className={styles.above}>
+        <p className={`${styles.pitch} ${styles.pitchB} ${styles.enter}`} style={enter(160)}>{t.hero.pitch}</p>
+        <div className={`${styles.above} ${styles.enter}`} style={enter(240)}>
           <PlatformButtons tone="onLight" />
         </div>
         <HeroMedia className={styles.mediaB} />
@@ -54,14 +65,11 @@ export function Hero({ variant = 'A' }: { variant?: 'A' | 'B' }) {
       <div className={styles.split}>
         <div className={styles.copy}>
           <Title className={styles.title} />
-          <div data-reveal data-delay="150" className={styles.intro}>
-            <p className={styles.pitch}>{t.hero.pitch}</p>
-            <FlipCard />
-          </div>
+          <p className={`${styles.pitch} ${styles.enter}`} style={enter(160)}>{t.hero.pitch}</p>
         </div>
         <HeroMedia className={styles.mediaA} />
       </div>
-      <div className={styles.above}>
+      <div className={`${styles.above} ${styles.enter}`} style={enter(240)}>
         <PlatformButtons tone="onLight" />
       </div>
     </section>

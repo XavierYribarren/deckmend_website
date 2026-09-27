@@ -32,6 +32,7 @@
 }
 
 .brand {
+  flex: none;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -40,8 +41,10 @@
 }
 
 .wordmark {
-  font: 700 22px/1 var(--font-display);
-  letter-spacing: -0.01em;
+  white-space: nowrap;
+  font: var(--accent-weight) 22px/1 var(--font-display);
+  font-stretch: var(--accent-stretch);
+  letter-spacing: -0.02em;
 }
 
 .nav {
@@ -51,6 +54,7 @@
 
 .navLink {
   padding: 10px 14px;
+  white-space: nowrap;
   border-radius: 999px;
   text-decoration: none;
   font: 400 15px/1 var(--font-body);
@@ -60,6 +64,7 @@
 .navLink:hover { background: var(--dm-line); }
 
 .end {
+  flex: none;
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -83,13 +88,21 @@
   color: var(--dm-ink);
 }
 
-@media (max-width: 759px) {
+/* Sous ~1000px, le nom élargi, le sélecteur de langue et le bouton ne laissent plus
+   la place aux liens : on les masque plutôt que de les laisser se tasser. */
+@media (max-width: 999px) {
   .nav { display: none; }
 }
 
 /* Petits écrans : le bouton ne garde que sa flèche pour laisser la place au sélecteur */
 @media (max-width: 420px) {
-  .cta { padding: 12px 14px; }
+  /* Tout doit tenir dans 90vw dès 320px : logo, nom élargi, langues, bouton */
+  .inner { gap: 12px; }
+  .brand { gap: 8px; }
+  .brand img { width: 30px; height: 30px; }
+  .wordmark { font-size: 18px; }
+  .end { gap: 8px; }
+  .cta { padding: 11px 12px; }
   .ctaLabel {
     position: absolute; width: 1px; height: 1px; overflow: hidden;
     clip: rect(0, 0, 0, 0); white-space: nowrap;

@@ -1,9 +1,21 @@
-/* OrticaLinear n'est pas distribuée en webfont : on la prend si elle est installée
-   localement, sinon on retombe sur Archivo (Google Fonts). Pour l'embarquer,
-   déposer les .woff2 dans /public/fonts et ajouter un `url()` ici. */
-@font-face { font-family: 'OrticaLinear'; src: local('OrticaLinear-Light'), local('OrticaLinear Light'), local('Ortica Linear Light'); font-weight: 300; }
-@font-face { font-family: 'OrticaLinear'; src: local('OrticaLinear-Regular'), local('OrticaLinear'), local('Ortica Linear'); font-weight: 400; }
-@font-face { font-family: 'OrticaLinear'; src: local('OrticaLinear-Bold'), local('OrticaLinear Bold'), local('Ortica Linear Bold'); font-weight: 700; }
+/* Polices de secours calées sur Archivo et Inter (largeur moyenne mesurée sur du texte du site,
+   hauteurs de ligne identiques) : le remplacement par la vraie police ne décale plus le texte. */
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 98.67%;
+  ascent-override: 88.98%;
+  descent-override: 21.28%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 106.7%;
+  ascent-override: 90.79%;
+  descent-override: 22.61%;
+  line-gap-override: 0%;
+}
 
 :root {
   /* Couleurs de marque (paramétrables dans la maquette) */
@@ -18,8 +30,11 @@
   --dm-muted: #6B6F85;
   --dm-white: #FFFFFF;
 
-  --font-display: 'OrticaLinear', 'Archivo', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Archivo', 'Archivo Fallback', sans-serif;
+  /* Accent : Archivo extra-large et extra-grasse (« Deckmend », mot en gras du titre) */
+  --accent-stretch: 125%;
+  --accent-weight: 800;
+  --font-body: 'Inter', 'Inter Fallback', sans-serif;
 
   /* Largeur utile de la page (header, sections, footer) */
   --page-width: 90vw;

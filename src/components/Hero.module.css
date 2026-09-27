@@ -23,6 +23,22 @@
   min-height: clamp(400px, 44vw, 640px);
 }
 
+/* Une seule colonne (la grille passe à 1 colonne sous ~1094px : 2 × 480px + gouttière = 90vw) :
+   le texte n'a plus à s'aligner sur la hauteur de l'éventail. */
+@media (max-width: 1093px) {
+  .copy {
+    min-height: 0;
+    gap: 32px;
+  }
+}
+
+/* Deux colonnes : le titre peut s'étendre un peu sur l'éventail (le texte est
+   au-dessus des cartes). Assez pour que les lignes françaises tiennent, sans
+   laisser une ligne longue (« Everything gets reshuffled. ») traverser les cartes. */
+@media (min-width: 1094px) {
+  .copy .title { margin-right: calc(-1 * min(8vw, 160px)); }
+}
+
 .title {
   margin: 0;
   font-family: var(--font-display);
@@ -33,12 +49,9 @@
 }
 
 .line { display: block; }
-.bold { font-weight: 700; }
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
+.bold {
+  font-weight: var(--accent-weight);
+  font-stretch: var(--accent-stretch);
 }
 
 .pitch {
@@ -85,6 +98,67 @@
 
 .mediaA { min-height: clamp(340px, 44vw, 640px); }
 
+/* Une colonne (mobile, tablette) : l'éventail remonte derrière l'accroche, centré,
+   et les boutons passent sur son tiers bas, pour que titre, accroche et boutons
+   tiennent dans le premier écran. Un dégradé couleur fond estompe le haut des cartes
+   pour garder le texte lisible. Tout est exprimé dans l'unité de l'éventail, en vw
+   (et non en cqi : la hauteur de l'emplacement se calcule sur lui-même, hors de son
+   propre conteneur). Emprise visible des cartes : de 8 à 125 unités depuis le haut de leur zone. */
+@media (max-width: 1093px) {
+  /* Sur le hero entier : l'emplacement de l'éventail et les boutons partagent l'unité */
+  .hero { --fan-u: clamp(2.4px, calc(171vw / 220), 3.4px); }
+  .mediaA {
+    --card-fan-unit: var(--fan-u);
+    --fan-shift: 0px;
+    min-height: 0;
+    height: calc(117 * var(--card-fan-unit));
+    /* Le haut des cartes arrive au niveau du haut de l'accroche */
+    margin-top: calc(-42 * var(--card-fan-unit));
+  }
+  .mediaA > :global(.card-fan) {
+    top: 0;
+    translate: calc(-50% - var(--fan-shift)) calc(-8 * var(--card-fan-unit));
+  }
+  /* Dégradé léger au-dessus des cartes, sous le texte (le texte reste au-dessus) */
+  .mediaA::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: -10vw;
+    right: -10vw;
+    top: calc(-6 * var(--card-fan-unit));
+    height: calc(70 * var(--card-fan-unit));
+    background: linear-gradient(
+      to bottom,
+      var(--dm-bg) 0%,
+      color-mix(in srgb, var(--dm-bg) 82%, transparent) 35%,
+      transparent 100%
+    );
+  }
+  .split + .above { margin-top: calc(-44 * var(--fan-u)); }
+}
+
+/* Arrivée : fondu + légère montée, décalée par --d */
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes heroFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.enter {
+  animation: heroEnter .8s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+.line.enter { display: block; }
+.fadeIn { animation: heroFade .6s ease 120ms both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .enter,
+  .fadeIn { animation: none; }
+}
+
 /* Variante B */
 .heroB { padding-top: clamp(40px, 6vw, 96px); }
 
@@ -94,16 +168,8 @@
   letter-spacing: -0.04em;
 }
 
-.introB {
-  margin: clamp(12px, 2vw, 24px) 0 clamp(8px, 1.5vw, 16px);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-}
-
 .pitchB {
+  margin: clamp(12px, 2vw, 24px) 0 clamp(8px, 1.5vw, 16px);
   font-size: clamp(17px, 1.5vw, 21px);
   max-width: 38ch;
 }

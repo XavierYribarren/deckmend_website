@@ -19,6 +19,10 @@ export const ArrowRight = ({ size = 18, ...p }: IconProps) => (
   <svg {...base(size, p)}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 )
 
+export const ChevronDown = ({ size = 16, ...p }: IconProps) => (
+  <svg {...base(size, p)}><path d="m6 9 6 6 6-6" /></svg>
+)
+
 export const ArrowDown = ({ size = 15, ...p }: IconProps) => (
   <svg {...base(size, { strokeWidth: 1.6, ...p })}><path d="M12 5v14M5 12l7 7 7-7" /></svg>
 )

@@ -68,3 +68,40 @@
 }
 .footnote.onLight { color: var(--dm-muted); }
 .footnote.onInk { color: rgba(233, 233, 236, .7); }
+
+/* Mobile : lien « Autres appareils » et bloc dépliable */
+.more {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: -4px 0 -4px;
+  padding: 6px 2px;
+  border: 0;
+  background: none;
+  font: 500 14px/1.2 var(--font-body);
+  cursor: pointer;
+  text-underline-offset: 3px;
+}
+.more:hover { text-decoration: underline; }
+.more.onLight { color: var(--dm-ink); }
+.more.onInk { color: var(--dm-line); }
+
+.chevron { transition: transform .3s var(--ease-out); }
+.more[aria-expanded='true'] .chevron { transform: rotate(180deg); }
+
+/* Dépliage en hauteur sans connaître la hauteur du contenu (0fr → 1fr) */
+.others {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: -16px;
+  transition: grid-template-rows .4s var(--ease-out), margin-top .4s var(--ease-out);
+}
+.others[data-open] {
+  grid-template-rows: 1fr;
+  margin-top: 0;
+}
+.othersInner {
+  min-height: 0;
+  overflow: hidden;
+}

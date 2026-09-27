@@ -31,15 +31,9 @@ export const en: Messages = {
     pitch: 'Deckmend combines your incomplete decks to rebuild full 52-card decks. No sleight of hand.',
   },
 
-  flip: {
-    idle: 'Think of a card. Then tap mine.',
-    revealed: 'It was the 7 of hearts. Obviously.',
-    reveal: 'Reveal the card',
-    hide: 'Flip the card back',
-  },
-
   platforms: {
     footnote: 'Free, no account, your data stays on your device.',
+    otherDevices: 'Other devices',
     android: {
       kicker: 'Android · web app',
       label: 'Install on Android',

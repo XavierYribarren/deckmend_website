@@ -34,15 +34,9 @@ export const fr = {
     pitch: 'Deckmend combine tes paquets incomplets pour reconstituer des jeux de 52 cartes. Sans tour de passe-passe.',
   },
 
-  flip: {
-    idle: 'Pense à une carte. Puis touche la mienne.',
-    revealed: "C'était le 7 de cœur. Évidemment.",
-    reveal: 'Révéler la carte',
-    hide: 'Retourner la carte',
-  },
-
   platforms: {
     footnote: 'Gratuit, sans compte, tes données restent sur ton appareil.',
+    otherDevices: 'Autres appareils',
     android: {
       kicker: 'Android · app web',
       label: 'Installer sur Android',

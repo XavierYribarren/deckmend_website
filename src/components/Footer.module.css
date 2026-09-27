@@ -12,7 +12,11 @@
   gap: 12px;
 }
 
-.wordmark { font: 700 20px/1 var(--font-display); }
+.wordmark {
+  font: var(--accent-weight) 20px/1 var(--font-display);
+  font-stretch: var(--accent-stretch);
+  letter-spacing: -0.02em;
+}
 
 .legal {
   font: 400 13px/1.5 var(--font-body);
